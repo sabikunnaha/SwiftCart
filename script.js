@@ -1,4 +1,4 @@
-// Get top raited product
+// Get top rated product
 
 fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
@@ -36,7 +36,7 @@ fetch('https://fakestoreapi.com/products')
           ${product.title}
         </h3>
 
-          <span class="text-xl font-bold text-blue-600">
+          <span class="text-xl font-bold ">
             $${product.price}
           </span>
 
@@ -47,7 +47,7 @@ fetch('https://fakestoreapi.com/products')
             Details
           </button>
 
-          <button class="bg-blue-600 text-white px-10 py-2 rounded-lg hover:bg-blue-700">
+          <button class="bg-indigo-600 text-white px-10 py-2 rounded-lg ">
             <i class="fa-solid fa-cart-shopping"></i>
             Add
           </button>
@@ -59,3 +59,27 @@ fetch('https://fakestoreapi.com/products')
         })
 
     })
+
+
+    // Show product category
+
+    const loadCategory =()=>{
+        fetch('https://fakestoreapi.com/products/categories')
+        .then(res=> res.json())
+        .then(data=>displyCategory(data))
+    }
+
+    loadCategory();
+
+    const displyCategory =(pCategories)=>{
+        console.log(pCategories)
+        const categoryContainer = document.getElementById('category-container');
+         pCategories.forEach(category=> {
+          const btn= document.createElement('button');
+          btn.innerHTML= ` <button class="btn btn-soft btn-primary rounded-full"> ${category}</button> `;
+
+          categoryContainer.appendChild(btn)
+        })
+        
+    }
+    
